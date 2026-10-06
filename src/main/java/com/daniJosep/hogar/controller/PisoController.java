@@ -29,7 +29,6 @@ public class PisoController {
 
         for(Piso p : pisos){
             if(p.getId() == id){
-                p.setProvincia(piso.getProvincia());
                 p.setCalle(piso.getCalle());
                 p.setNumero(piso.getNumero());
                 p.setCp(piso.getCp());
@@ -40,7 +39,7 @@ public class PisoController {
         return null;
     }
 
-    @GetMapping("/pisos")
+    @GetMapping("/pisos/{id}")
     public Piso getPiso(@PathVariable int id){
         for(Piso piso : pisos){
             if(piso.getId() == id){
@@ -50,12 +49,12 @@ public class PisoController {
         return null;
     }
 
-    @GetMapping
+    @GetMapping("/pisos/")
     public List<Piso> getPisos(){
         return pisos;
     }
 
-    @DeleteMapping
+    @DeleteMapping("/pisos/{id}")
     public void deletePiso(@RequestParam int id){
         pisos.removeIf(piso -> piso.getId() == id);
         }
