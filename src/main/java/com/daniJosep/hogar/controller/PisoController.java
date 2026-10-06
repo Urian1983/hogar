@@ -2,10 +2,7 @@ package com.daniJosep.hogar.controller;
 
 import com.daniJosep.hogar.entity.Piso;
 import jakarta.annotation.PostConstruct;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +18,29 @@ public class PisoController {
         pisos.add(new Piso("Republica Argentina","264","08023","Barcelona"));
     }
 
-    @GetMapping
+    @PostMapping("/pisos")
+    public Piso createPiso(@RequestBody Piso piso){
+        pisos.add(piso);
+        return piso;
+    }
+
+    @PutMapping("/pisos")
+    public Piso updatePiso(@RequestBody Piso piso, @PathVariable int id){
+
+        for(Piso p : pisos){
+            if(p.getId() == id){
+                p.setProvincia(piso.getProvincia());
+                p.setCalle(piso.getCalle());
+                p.setNumero(piso.getNumero());
+                p.setCp(piso.getCp());
+                p.setProvincia(piso.getProvincia());
+                return p;
+            }
+        }
+        return null;
+    }
+
+    @GetMapping("/pisos")
     public Piso getPiso(@PathVariable int id){
         for(Piso piso : pisos){
             if(piso.getId() == id){
@@ -36,5 +55,10 @@ public class PisoController {
         return pisos;
     }
 
+    @DeleteMapping
+    public void deletePiso(@RequestParam int id){
+        pisos.removeIf(piso -> piso.getId() == id);
+        }
+    }
 
-}
+
