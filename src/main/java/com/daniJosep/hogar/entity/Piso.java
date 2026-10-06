@@ -1,11 +1,20 @@
-package entity;
+package com.daniJosep.hogar.entity;
 
 public class Piso {
 
+    int id;
     String calle;
     String numero;
     String cp;
     String provincia;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Piso(){
 
