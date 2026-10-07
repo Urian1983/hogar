@@ -14,14 +14,25 @@ public class Piso {
     private String superficie;
     private String codigoCatastral;
     private String Estado;
+    private int id;
 
-    public Piso(String numeroPiso, String puerta, String superficie, String codigoCatastral, String Estado) {
+    public Piso(int id, String numeroPiso, String puerta, String superficie, String codigoCatastral, String Estado) {
         this.numeroPiso = numeroPiso;
+        this.id = id;
         this.puerta = puerta;
         this.superficie = superficie;
         this.codigoCatastral = codigoCatastral;
         this.Estado = Estado;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
     
 
