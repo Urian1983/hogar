@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,12 @@ public class PisoController {
 @PostConstruct
 public void cargarDatos(){
     pisos.add(new Piso(1,"4","A","200","3454656","usado"));
+}
+
+@PostMapping("/pisos")
+public Piso createPiso(@RequestBody Piso piso){
+    pisos.add(piso);
+    return piso;
 }
 
 @GetMapping("/pisos")
