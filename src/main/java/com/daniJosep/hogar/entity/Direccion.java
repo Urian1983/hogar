@@ -1,26 +1,27 @@
 package com.daniJosep.hogar.entity;
 
-public class Piso {
+public class Direccion {
 
-    int id;
-    String calle;
-    String numero;
-    String cp;
-    String provincia;
+    private int id;
+    private String calle;
+    private String numero;
+    private String cp;
+    private String provincia;
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public Direccion(){
+        this.id = 0;
+        this.calle = "calle";
+        this.numero = "numero";
+        this.cp = "codigo postal";
+    }
+
+    public Direccion(int id, String calle, String numero, String cp, String provincia){
+
         this.id = id;
-    }
-
-    public Piso(){
-
-    }
-
-    public Piso(String calle, String numero, String cp, String provincia) {
         this.calle = calle;
         this.numero = numero;
         this.cp = cp;
