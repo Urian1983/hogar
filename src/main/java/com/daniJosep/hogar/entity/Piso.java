@@ -15,6 +15,16 @@ public class Piso {
     private String codigoCatastral;
     private String Estado;
 
+    public Piso(String numeroPiso, String puerta, String superficie, String codigoCatastral, String Estado) {
+        this.numeroPiso = numeroPiso;
+        this.puerta = puerta;
+        this.superficie = superficie;
+        this.codigoCatastral = codigoCatastral;
+        this.Estado = Estado;
+    }
+    
+    
+
     public String getNumeroPiso() {
         return numeroPiso;
     }
