@@ -3,6 +3,7 @@ package com.daniJosep.hogar.controller;
 import com.daniJosep.hogar.entity.Direccion;
 import com.daniJosep.hogar.exception.AddressNotFoundException;
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class DireccionController {
     }
 
     @PutMapping("/direcciones/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Direccion updateDireccion(@RequestBody Direccion direccion, @PathVariable int id){
         return direcciones.stream()
                 .filter(p -> p.getId() == id)
@@ -40,8 +42,8 @@ public class DireccionController {
                 .orElseThrow(() -> new AddressNotFoundException("No se encuentra la dirección con la id: " +id));
         }
 
-
     @GetMapping("/direcciones/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Direccion getDireccion(@PathVariable int id){
         return direcciones.stream()
                 .filter(direccion -> direccion.getId() ==id)
@@ -50,11 +52,13 @@ public class DireccionController {
     }
 
     @GetMapping("/direcciones")
+    @ResponseStatus(HttpStatus.OK)
     public List<Direccion> getAllDirecciones(){
         return direcciones;
     }
 
     @DeleteMapping("/direcciones/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDireccion(@PathVariable int id){
         boolean removed = direcciones.removeIf(p -> p.getId() == id);
         if(!removed)
