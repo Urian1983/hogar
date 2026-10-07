@@ -54,7 +54,7 @@ public class DireccionController {
         return direcciones;
     }
 
-    @DeleteMapping("/pisos/{id}")
+    @DeleteMapping("/direcciones/{id}")
     public void deleteDireccion(@PathVariable int id){
         boolean removed = direcciones.removeIf(p -> p.getId() == id);
         if(!removed)
