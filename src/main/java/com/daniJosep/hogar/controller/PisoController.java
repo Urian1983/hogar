@@ -4,6 +4,7 @@ import com.daniJosep.hogar.entity.Piso;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +38,14 @@ public Piso getPiso(@PathVariable int id){
         }
     }
     return null;
+}
+
+@DeleteMapping("/pisos/{id}")
+public void deletePiso(@PathVariable int id){
+    for(int i = 0; i < pisos.size();i++){
+        if(pisos.get(i).getId()==id){
+            pisos.remove(i);
+        }
+    }
 }
 }
